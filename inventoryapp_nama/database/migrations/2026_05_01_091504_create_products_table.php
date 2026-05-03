@@ -14,14 +14,15 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->enum('type', ['in', 'out']);
-            $table->integer('amount');
-            $table->text('notes'); 
-            
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->string('name');
+            $table->text('description');
+            $table->string('image');
+            $table->integer('price');
+            $table->integer('stock');
+
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
         });
+
     }
 
     /**
